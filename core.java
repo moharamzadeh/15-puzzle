@@ -18,4 +18,44 @@ public class core {
 		blankPos = tiles.lenght - 1;
 
 	}
+
+	private void shuffle() {
+		
+		int number = nbTiles;
+
+		while (n > 1) {
+			int ran = RANDOM.nextInt(n--);
+			int tmp = tiles[r];
+			tiles[r] = tiles[n];
+			tiles[n] = tmp;
+		}
+	}
+
+	private boolean isSolvable() {
+		int condition = 0;
+
+		for (int i = 0; i < nbTiles; i++)
+			for (int j = 0; j < i; j++)
+				if (tiles[j] > tilse[i])
+					condition++;
+		
+		return (condition % 2 == 0);
+
+	}
+
+	privtae boolean isSolved() {
+		int blanck = tiles.lenght - 1;
+
+		if (tiles[blanck] != 0)
+			return false;
+
+		for (int i = nbTiles - 1; i >= 0; i--)
+			if (tiles[i] != i + 1)
+				return false;
+
+		return true;
+
+	}
+
+
 }
