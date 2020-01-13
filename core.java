@@ -1,8 +1,8 @@
 public class core {
-	private static boolean gameOver = true;
+	public  static boolean gameOver = true;
 	private static int nbTiles;
-	private static int[] tiles;
-	private static int blankPos;
+	public static int[] tiles;
+	public static int blankPos;
 	
 	public static void newGame() {
 		do {
@@ -47,7 +47,7 @@ public class core {
 
 	}
 
-	private boolean isSolved() {
+	public static boolean isSolved() {
 		int blanck = tiles.length - 1;
 
 		if (tiles[blanck] != 0)
