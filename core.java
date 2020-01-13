@@ -1,5 +1,8 @@
 public class core {
-	private boolean gameOver = true;
+	private static boolean gameOver = true;
+	private static int nbTiles;
+	private static int[] tiles;
+	private static int blankPos;
 	
 	public static void newGame() {
 		do {
@@ -7,7 +10,7 @@ public class core {
 			shuffle();
 		} while (!isSolvable());
 
-		gomeOver = false;
+		gameOver = false;
 
 	}
 
@@ -15,36 +18,37 @@ public class core {
 		for (int i = 0; i < tiles.length; i++)
 			tiles[i] = (i + 1) % tiles.length;
 
-		blankPos = tiles.lenght - 1;
+		blankPos = tiles.length - 1;
 
 	}
 
-	private void shuffle() {
+	private static void shuffle() {
 		
 		int number = nbTiles;
 
-		while (n > 1) {
-			int ran = RANDOM.nextInt(n--);
-			int tmp = tiles[r];
-			tiles[r] = tiles[n];
-			tiles[n] = tmp;
+		while (number > 1) {
+			int ran = (int)(Math.random() * number);
+			number--;
+			int tmp = tiles[ran];
+			tiles[ran] = tiles[number];
+			tiles[number] = tmp;
 		}
 	}
 
-	private boolean isSolvable() {
+	private static boolean isSolvable() {
 		int condition = 0;
 
 		for (int i = 0; i < nbTiles; i++)
 			for (int j = 0; j < i; j++)
-				if (tiles[j] > tilse[i])
+				if (tiles[j] > tiles[i])
 					condition++;
 		
 		return (condition % 2 == 0);
 
 	}
 
-	privtae boolean isSolved() {
-		int blanck = tiles.lenght - 1;
+	private boolean isSolved() {
+		int blanck = tiles.length - 1;
 
 		if (tiles[blanck] != 0)
 			return false;
